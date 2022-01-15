@@ -28,17 +28,24 @@ const addClient = (passportID, cash = 0, credit = 0) => {
   }
 };
 
-//* Read a user from the array of users.
-// const readUser = (id) => {
-//   const usersArr = loadUsers();
-//   const chossenUser = usersArr.find((user) => user.id === id);
+//* Can fetch all details of a particular user.
+const readClient = (accountID) => {
+  const clientsArr = loadClients();
+  const res = {};
+  const chossenClient = clientsArr.find(
+    (client) => client.accountID === accountID
+  );
 
-//   if (chossenUser) {
-
-//   } else {
-
-//   }
-// };
+  if (chossenClient) {
+    res.client = {
+      chossenClient
+    };
+  } else {
+    res.error = true;
+    res.message = "Client not found!";
+  }
+  return res;
+};
 
 //* Update the client from the array of clients.
 const updateClients = (accountID, { type, amount, clientToTransfer } = {}) => {
@@ -203,21 +210,11 @@ const transferring = (clientsArr, accountID, amount, clientToTransfer) => {
   return res;
 };
 
-//* List all the notes from the array of notes.
-// const updateUser = (id, name, email) => {
-//   const usersArr = loadUsers();
-//   const chosenUser = usersArr.find((user) => user.id === id);
-
-//   if (chosenUser) {
-//     chosenUser.name = name || chosenUser.name;
-//     chosenUser.email = email || chosenUser.email;
-
-//     saveClients(usersArr);
-
-//   } else {
-
-//   }
-// };
+//* Can fetch all details of a particular user.
+const listClients = () => {
+  const clientsArr = loadClients();
+  return clientsArr;
+};
 
 //* Save the array of clients in clients.json
 const saveClients = (clientsArr) => {
@@ -240,4 +237,6 @@ const loadClients = () => {
 module.exports = {
   addClient,
   updateClients,
+  readClient,
+  listClients
 };
