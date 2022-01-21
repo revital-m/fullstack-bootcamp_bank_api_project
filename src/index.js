@@ -13,7 +13,7 @@ app.use(router);
 const publicPath = path.join(__dirname, 'client/build');
 app.use(cors());
 app.use(express.static(publicPath));
-app.use("*", (req, res) => {
+app.get("*", (req, res) => {
     res.sendFile(path.resolve(publicPath, "index.html"));
   });
 
