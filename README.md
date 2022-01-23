@@ -39,6 +39,17 @@ Returns json data of all the clients.
 
 **URL Params** : none
 
+## Show One Client
+
+Returns json data of the client.
+
+**URL**:
+/clients/:id
+
+**Method**: Get
+
+**URL Params** : userId
+
 ## Deposite cash
 
 Deposit cash to a client account
